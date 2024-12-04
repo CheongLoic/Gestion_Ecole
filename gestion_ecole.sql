@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 09 juin 2019 à 21:11
--- Version du serveur :  5.7.24
--- Version de PHP :  7.2.14
+-- Généré le : mer. 04 déc. 2024 à 05:53
+-- Version du serveur : 9.1.0
+-- Version de PHP : 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `gestion_ecole`
+-- Base de données : `gestion_ecole`
 --
 
 -- --------------------------------------------------------
@@ -30,7 +29,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `annee_scolaire`;
 CREATE TABLE IF NOT EXISTS `annee_scolaire` (
-  `id_annee_scolaire` int(255) NOT NULL,
+  `id_annee_scolaire` int NOT NULL,
   PRIMARY KEY (`id_annee_scolaire`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -50,9 +49,9 @@ INSERT INTO `annee_scolaire` (`id_annee_scolaire`) VALUES
 
 DROP TABLE IF EXISTS `bulletin`;
 CREATE TABLE IF NOT EXISTS `bulletin` (
-  `id_bulletin` int(11) NOT NULL AUTO_INCREMENT,
-  `id_trimestre` int(11) NOT NULL,
-  `id_inscription` int(11) NOT NULL,
+  `id_bulletin` int NOT NULL AUTO_INCREMENT,
+  `id_trimestre` int NOT NULL,
+  `id_inscription` int NOT NULL,
   `appreciation_bulletin` varchar(255) NOT NULL,
   PRIMARY KEY (`id_bulletin`),
   KEY `id_trimestre` (`id_trimestre`),
@@ -77,11 +76,11 @@ INSERT INTO `bulletin` (`id_bulletin`, `id_trimestre`, `id_inscription`, `apprec
 
 DROP TABLE IF EXISTS `classe`;
 CREATE TABLE IF NOT EXISTS `classe` (
-  `id_classe` int(255) NOT NULL AUTO_INCREMENT,
+  `id_classe` int NOT NULL AUTO_INCREMENT,
   `nom_classe` varchar(255) NOT NULL,
-  `id_ecole` int(255) NOT NULL,
-  `id_niveau` int(255) NOT NULL,
-  `id_annee_scolaire` int(255) NOT NULL,
+  `id_ecole` int NOT NULL,
+  `id_niveau` int NOT NULL,
+  `id_annee_scolaire` int NOT NULL,
   PRIMARY KEY (`id_classe`),
   KEY `id_ecole` (`id_ecole`),
   KEY `id_niveau` (`id_niveau`),
@@ -106,9 +105,9 @@ INSERT INTO `classe` (`id_classe`, `nom_classe`, `id_ecole`, `id_niveau`, `id_an
 
 DROP TABLE IF EXISTS `detail_bulletin`;
 CREATE TABLE IF NOT EXISTS `detail_bulletin` (
-  `id_detail_bulletin` int(11) NOT NULL AUTO_INCREMENT,
-  `id_bulletin` int(11) NOT NULL,
-  `id_enseignement` int(11) NOT NULL,
+  `id_detail_bulletin` int NOT NULL AUTO_INCREMENT,
+  `id_bulletin` int NOT NULL,
+  `id_enseignement` int NOT NULL,
   `appreciation_detail` varchar(255) NOT NULL,
   PRIMARY KEY (`id_detail_bulletin`),
   KEY `id_bulletin` (`id_bulletin`),
@@ -157,7 +156,7 @@ INSERT INTO `detail_bulletin` (`id_detail_bulletin`, `id_bulletin`, `id_enseigne
 
 DROP TABLE IF EXISTS `discipline`;
 CREATE TABLE IF NOT EXISTS `discipline` (
-  `id_discipline` int(11) NOT NULL AUTO_INCREMENT,
+  `id_discipline` int NOT NULL AUTO_INCREMENT,
   `nom_discipline` varchar(255) NOT NULL,
   PRIMARY KEY (`id_discipline`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
@@ -187,10 +186,10 @@ INSERT INTO `discipline` (`id_discipline`, `nom_discipline`) VALUES
 
 DROP TABLE IF EXISTS `ds`;
 CREATE TABLE IF NOT EXISTS `ds` (
-  `id_ds` int(11) NOT NULL AUTO_INCREMENT,
+  `id_ds` int NOT NULL AUTO_INCREMENT,
   `nom_ds` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ds`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `ds`
@@ -228,7 +227,7 @@ INSERT INTO `ds` (`id_ds`, `nom_ds`) VALUES
 
 DROP TABLE IF EXISTS `ecole`;
 CREATE TABLE IF NOT EXISTS `ecole` (
-  `id_ecole` int(255) NOT NULL AUTO_INCREMENT,
+  `id_ecole` int NOT NULL AUTO_INCREMENT,
   `nom_ecole` varchar(255) NOT NULL,
   `adresse_ecole` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ecole`)
@@ -250,10 +249,10 @@ INSERT INTO `ecole` (`id_ecole`, `nom_ecole`, `adresse_ecole`) VALUES
 
 DROP TABLE IF EXISTS `enseignement`;
 CREATE TABLE IF NOT EXISTS `enseignement` (
-  `id_enseignement` int(11) NOT NULL AUTO_INCREMENT,
-  `id_classe` int(11) NOT NULL,
-  `id_discipline` int(11) NOT NULL,
-  `id_personne` int(11) NOT NULL,
+  `id_enseignement` int NOT NULL AUTO_INCREMENT,
+  `id_classe` int NOT NULL,
+  `id_discipline` int NOT NULL,
+  `id_personne` int NOT NULL,
   PRIMARY KEY (`id_enseignement`),
   KEY `id_classe` (`id_classe`),
   KEY `id_discipline` (`id_discipline`),
@@ -286,16 +285,16 @@ INSERT INTO `enseignement` (`id_enseignement`, `id_classe`, `id_discipline`, `id
 
 DROP TABLE IF EXISTS `evaluation`;
 CREATE TABLE IF NOT EXISTS `evaluation` (
-  `id_evaluation` int(11) NOT NULL AUTO_INCREMENT,
-  `id_detail_bulletin` int(11) NOT NULL,
-  `id_ds` int(11) NOT NULL,
+  `id_evaluation` int NOT NULL AUTO_INCREMENT,
+  `id_detail_bulletin` int NOT NULL,
+  `id_ds` int NOT NULL,
   `note_evaluation` double NOT NULL,
-  `coeff` int(11) NOT NULL,
+  `coeff` int NOT NULL,
   `appreciation_evaluation` varchar(255) NOT NULL,
   PRIMARY KEY (`id_evaluation`),
   KEY `id_ds` (`id_ds`),
   KEY `id_detail_bulletin` (`id_detail_bulletin`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `evaluation`
@@ -363,9 +362,9 @@ INSERT INTO `evaluation` (`id_evaluation`, `id_detail_bulletin`, `id_ds`, `note_
 
 DROP TABLE IF EXISTS `inscription`;
 CREATE TABLE IF NOT EXISTS `inscription` (
-  `id_inscription` int(255) NOT NULL AUTO_INCREMENT,
-  `id_classe` int(255) NOT NULL,
-  `id_personne` int(255) NOT NULL,
+  `id_inscription` int NOT NULL AUTO_INCREMENT,
+  `id_classe` int NOT NULL,
+  `id_personne` int NOT NULL,
   PRIMARY KEY (`id_inscription`),
   KEY `id_classe` (`id_classe`),
   KEY `id_personne` (`id_personne`)
@@ -389,7 +388,7 @@ INSERT INTO `inscription` (`id_inscription`, `id_classe`, `id_personne`) VALUES
 
 DROP TABLE IF EXISTS `niveau`;
 CREATE TABLE IF NOT EXISTS `niveau` (
-  `id_niveau` int(255) NOT NULL AUTO_INCREMENT,
+  `id_niveau` int NOT NULL AUTO_INCREMENT,
   `nom_niveau` varchar(255) NOT NULL,
   PRIMARY KEY (`id_niveau`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
@@ -411,7 +410,7 @@ INSERT INTO `niveau` (`id_niveau`, `nom_niveau`) VALUES
 
 DROP TABLE IF EXISTS `personne`;
 CREATE TABLE IF NOT EXISTS `personne` (
-  `id_personne` int(255) NOT NULL AUTO_INCREMENT,
+  `id_personne` int NOT NULL AUTO_INCREMENT,
   `nom_personne` varchar(255) NOT NULL,
   `prenom_personne` varchar(255) NOT NULL,
   `civilite` varchar(4) NOT NULL,
@@ -450,11 +449,11 @@ INSERT INTO `personne` (`id_personne`, `nom_personne`, `prenom_personne`, `civil
 
 DROP TABLE IF EXISTS `trimestre`;
 CREATE TABLE IF NOT EXISTS `trimestre` (
-  `id_trimestre` int(255) NOT NULL AUTO_INCREMENT,
-  `numero_trimestre` int(255) NOT NULL,
+  `id_trimestre` int NOT NULL AUTO_INCREMENT,
+  `numero_trimestre` int NOT NULL,
   `debut_trimestre` date NOT NULL,
   `fin_trimestre` date NOT NULL,
-  `id_annee_scolaire` int(255) NOT NULL,
+  `id_annee_scolaire` int NOT NULL,
   PRIMARY KEY (`id_trimestre`),
   KEY `id_annee_scolaire` (`id_annee_scolaire`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
