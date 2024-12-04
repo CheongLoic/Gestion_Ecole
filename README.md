@@ -57,7 +57,7 @@ There are 3 types of users :
 
 Here is what looks like the admin page
 <p align="center">
-  <img src="img/phpMyAdmin_login_page.png">
+  <img src="img/signInPage.png">
 </p>
 
 Student page
