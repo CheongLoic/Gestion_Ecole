@@ -41,7 +41,7 @@ To launch the software, run the executable jar file in `Gestion_Ecole/Gestion_Ec
 At first, you will see a login page. To sign in, you will need of course your credentials. Simple user cannot create an account in a school management system. Only the admin has this power.
 
 <p align="center">
-  <img src="img/RDB.png">
+  <img src="img/signInPage.png">
 </p>
 
 There are 3 types of users :
@@ -57,7 +57,7 @@ There are 3 types of users :
 
 Here is what looks like the admin page
 <p align="center">
-  <img src="img/signInPage.png">
+  <img src="img/adminPage.png">
 </p>
 
 Student page
