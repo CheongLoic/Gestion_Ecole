@@ -8,10 +8,10 @@ Users can view, add, edit, or delete records directly through the interface.
 If you want to use the software, follow the steps below: 
 1. Download WampServer from https://www.wampserver.com/
 2. Install it
-3. Open Wampserver and that using phpMyAdmin
+3. Open Wampserver and start using phpMyAdmin
 
 <p align="center">
-  <img src="img/wampserver.PNG">
+  <img src="img/wampserver.png">
 </p>
 
 A web browser will open, enter the credentials.
@@ -46,12 +46,18 @@ At first, you will see a login page. To sign in, you will need of course your cr
 
 There are 3 types of users :
 - students : they can only read their school transcript 
+    * id : loic.cheong
+    * password : 1234
 - teachers : they can read, add, modify and delete grades
+    * id : marie.curie
+    * password : 1234
 - admins :  they manage the database, so they can read, add, modify and delete users
+    * id : manolo.hina
+    * password : 1234
 
 Here is what looks like the admin page
 <p align="center">
-  <img src="img/adminPage.png">
+  <img src="img/phpMyAdmin_login_page.png">
 </p>
 
 Student page
